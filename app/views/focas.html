@@ -1,0 +1,59 @@
+<div id="top" class="row">
+    <div class="col-xs-3">
+        <h2>Focas</h2>
+    </div>
+
+    <div class="col-xs-6">
+        <div class="input-group h2">
+            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Focas">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-xs-3">
+        <a class="btn btn-primary pull-right h2">Adicionar</a>
+    </div>
+
+</div>
+<div id="list" class="row">
+    <div class="table-responsive col-xs-12">
+        <table class="table table-striped" cellspacing="0" cellpadding="0">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data Nascimento</th>
+                <th>Qtd. Filhotes</th>
+                <th class="actions col-xs-2">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-show="!focas.length">
+                <td colspan="5">
+                    <div class="alert alert-warning" role="alert">Sem resultado!</div>
+                </td>
+            </tr>
+            <tr ng-show="focas.length" ng-repeat="foca in focas">
+                <td>{{foca.id}}</td>
+                <td>{{foca.nome}}</td>
+                <td>{{foca.dt_nas | asDate: 'dd/M/yyyy'}}</td>
+                <td>{{foca.qtd_filhotes}}</td>
+                <td class="actions">
+                    <a class="btn btn-success btn-xs" href="view.html">Detalhar</a>
+                    <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
+                    <a class="btn btn-danger btn-xs" href="#" data-toggle="modal"
+                       data-target="#delete-modal">Excluir</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
