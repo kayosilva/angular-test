@@ -33,9 +33,13 @@ angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'ngNot
     "local_token": 'user_token',
     "url": 'http://localhost:8080/api'
 }).filter('asDate', ['$filter', function ($filter) {
-    return function (input, format) {
+    return function (input, format, returnObj) {
         if (input == null) {
             return "";
+        }
+
+        if (typeof returnObj == "undefined" || returnObj == null) {
+            returnObj = false
         }
 
         //verifica se a string da data tem horas e separa
@@ -81,13 +85,17 @@ angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'ngNot
             }
 
 
+            if (returnObj) {
+                return dateTime;
+            }
+
             return $filter('date')(dateTime, format ? format : 'dd/MM/yyyy HH:mm:ss');
 
         }
 
-        var dateTime = new Date(input);
-        dateTime.setDate(30);
-        console.log('data ---> ', input);
-        return $filter('date')(dateTime, format ? format : 'dd/MM/yyyy HH:mm:ss');
+        // var dateTime = new Date(input);
+        // dateTime.setDate(30);
+        // console.log('data ---> ', input);
+        // return $filter('date')(dateTime, format ? format : 'dd/MM/yyyy HH:mm:ss');
     };
 }]);
