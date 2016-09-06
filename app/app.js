@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap'])
+angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'ngNotify'])
     .config(function ($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
 
@@ -17,9 +17,9 @@ angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap'])
             })
 
             // para a rota '/contato', carregaremos o template contato.html e o controller 'ContatoCtrl'
-            .when('/contato', {
-                templateUrl: 'app/views/contato.html',
-                controller: 'ContatoCtrl',
+            .when('/foca/add', {
+                templateUrl: 'app/views/add.html',
+                controller: 'AdicionarFocaCtrl',
             })
 
             // caso não seja nenhum desses, redirecione para a rota '/'
