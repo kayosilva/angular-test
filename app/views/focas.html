@@ -5,17 +5,14 @@
 
     <div class="col-xs-6">
         <div class="input-group h2">
-            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Focas">
-            <span class="input-group-btn">
-                <button class="btn btn-primary" type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </span>
+            <input name="search" ng-model="filter" class="form-control" id="search" type="text"
+                   placeholder="Pesquisar Focas">
+            <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
         </div>
     </div>
 
     <div class="col-xs-3">
-        <a class="btn btn-primary pull-right h2">Adicionar</a>
+        <a class="btn btn-primary pull-right h2" href="foca/add">Adicionar</a>
     </div>
 
 </div>
@@ -38,16 +35,15 @@
                     <div class="alert alert-warning" role="alert">Sem resultado!</div>
                 </td>
             </tr>
-            <tr ng-show="focas.length" ng-repeat="foca in focas">
+            <tr ng-show="focas.length" ng-repeat="foca in focas | filter:filter">
                 <td>{{foca.id}}</td>
                 <td>{{foca.nome}}</td>
                 <td>{{foca.dt_nas | asDate: 'dd/M/yyyy'}}</td>
                 <td>{{foca.qtd_filhotes}}</td>
                 <td class="actions">
-                    <a class="btn btn-success btn-xs" href="view.html">Detalhar</a>
+                    <a class="btn btn-success btn-xs" ng-click="openModal(foca)">Detalhar</a>
                     <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-                    <a class="btn btn-danger btn-xs" href="#" data-toggle="modal"
-                       data-target="#delete-modal">Excluir</a>
+                    <a class="btn btn-danger btn-xs" ng-click="abreModalDelete(foca)">Excluir</a>
                 </td>
             </tr>
 
