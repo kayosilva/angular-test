@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('FocasCtrl', function ($scope, $rootScope, $location, $http, CONFIG_APP, $uibModal, FocaService) {
+    .controller('FocasCtrl', function ($scope, $rootScope, $location, $http, CONFIG_APP, $uibModal, FocaService, $filter) {
         $rootScope.activeMenu = $location.path();
         $scope.focas = [];
         $scope.modalInstance = null;
@@ -13,6 +13,7 @@ angular.module('app')
                     angular.forEach(response.data, function (data) {
                         data.qtd_filhotes = data.children.length;
                         data.dt_nas = data.dtNascimento.date;
+                        data.idade = FocaService.calculaIdadeFoca($filter("asDate")(data.dt_nas, null, true));
                         $scope.focas.push(data);
                     });
                 }
