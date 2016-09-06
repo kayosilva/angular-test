@@ -19,6 +19,7 @@ angular.module('app').service("FocaService", function (CONFIG_APP, $http) {
      * @returns {HttpPromise}
      */
     this.salvar = function (data) {
+        data.parent_id = data.parent_id.id || null;
         return $http.post(CONFIG_APP.url + "/focas/create", data);
     }
 

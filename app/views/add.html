@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
         <h2>{{foca.id ? "Editar" : "Adicionar"}} Focas</h2>
+        <small class="pull-right">Campos com * são de preenchimento obrigatório.</small>
     </div>
 
 </div>
@@ -8,11 +9,11 @@
     <div class="col-xs-12">
         <form name="formFoca" class="well well-sm" ng-submit="salvarDados()">
             <div class="form-group">
-                <label for="nome">Nome</label>
+                <label for="nome">Nome *</label>
                 <input type="text" required ng-model="foca.nome" class="form-control" id="nome" placeholder="Nome">
             </div>
             <div class="form-group">
-                <label for="dt_nascimento">Data Nascimento</label>
+                <label for="dt_nascimento">Data Nascimento *</label>
                 <input type="text" required ng-model="foca.dtNascimento" class="form-control" id="dt_nascimento"
                        placeholder="Data de Nascimento">
             </div>
@@ -24,14 +25,26 @@
                     <input type="radio" checked ng-model="foca.genero" value="F" name="genero"> Femea
                 </label>
             </div>
-            <div class="form-group" ng-show="foca.id">
-                <label for="status">Status</label>
-                <select name="status" id="status" required ng-model="foca.status" class="form-control">
+            <div class="form-group">
+                <label for="parent_id">Genitora</label>
+                <select name="parent_id" id="parent_id"
+                        ng-options="option.nome for option in focasGenitoras track by option.id"
+                        ng-model="foca.parent_id" class="form-control">
                     <option value="">Selecione</option>
+                    <!--<option ng-repeat="genitora in focasGenitoras"-->
+                    <!--value="{{genitora.id}}">{{genitora.nome}}-->
+                    <!--</option>-->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status *</label>
+                <select name="status" id="status" required ng-model="foca.status" class="form-control">
+                    <option value="" selected>Selecione</option>
                     <option value="1">Vivo</option>
                     <option value="0">Morto</option>
                 </select>
             </div>
+
             <div class="form-group has-success has-feedback">
                 <a class="btn btn-default" href="focas">< Voltar</a>
                 <button type="submit" ng-disabled="!formFoca.$valid" class="btn btn-success">Salvar</button>
