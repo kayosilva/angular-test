@@ -32,5 +32,14 @@ angular.module('app').service("FocaService", function (CONFIG_APP, $http) {
         return $http.delete(CONFIG_APP.url + "/focas?id=" + id, {id: id})
     }
 
-
+    /**
+     * Calcula a idade da foca baseado na data  de nascimento
+     * @param Date dt_nascimento
+     * @returns {Number}
+     */
+    this.calculaIdadeFoca = function (dt_nascimento) {
+        var hoje = new Date();
+        var datediff = Math.floor(Math.ceil(Math.abs(dt_nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25)
+        return parseInt(datediff); //Convert values days and return value
+    }
 })
