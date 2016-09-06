@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('AdicionarFocaCtrl', function ($scope, FocaService) {
+    .controller('AdicionarFocaCtrl', function ($scope, FocaService, ngNotify) {
         $scope.foca = {};
 
 
@@ -11,16 +11,6 @@ angular.module('app')
         }
 
 
-        //inicia uma variavel com objeto vazio para as mensagens
-        $scope.mensagem = {};
-
-        /**
-         * Fecha o alerta
-         */
-        $scope.closeAlert = function () {
-            $scope.mensagem = {};
-        };
-
         /**
          * Salva os dados
          */
@@ -28,19 +18,21 @@ angular.module('app')
             var dadosFoca = $scope.foca;
             FocaService.salvar(dadosFoca)
                 .then(function (response) {
-                    $scope.mensagem = {
-                        type: "success",
-                        text: "Registro salvo com sucesso!",
-                        title: "Sucesso!"
-                    }
+                    // $scope.mensagem = {
+                    //     type: "success",
+                    //     text: "Registro salvo com sucesso!",
+                    //     title: "Sucesso!"
+                    // }
+                    ngNotify.set("Registro salvo com sucesso!", "success")
                     startModel();
 
                 }, function () {
-                    $scope.mensagem = {
-                        type: "warning",
-                        text: "Erro ao salvar dados!",
-                        title: "Erro!"
-                    }
+                    ngNotify.set("Erro ao salvar dados!", "error");
+                    // $scope.mensagem = {
+                    //     type: "warning",
+                    //     text: "Erro ao salvar dados!",
+                    //     title: "Erro!"
+                    // }
                 });
 
         }
