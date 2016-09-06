@@ -29,8 +29,9 @@ angular.module('app')
                 angular.forEach(response.data, function (foca) {
                     //verifica qual se a foca é diferente da que esta sendo editada ou se ela é
                     //femea e esta viva
-                    if ((typeof $scope.foca.id != "undefined" && $scope.foca.id != foca.id)
-                        && foca.genero == "F" && foca.status == 1) {
+                    if ($scope.foca.id != foca.id
+                        && foca.genero == "F"
+                        && foca.status == 1) {
                         $scope.focasGenitoras.push(foca);
                     }
                 });
@@ -49,8 +50,9 @@ angular.module('app')
                     ngNotify.set("Registro salvo com sucesso!", "success");
                     if (!dadosFoca.id) {
                         startModel();
+                    } else {
+                        getFoca(response.data.id);
                     }
-                    getFoca(response.data.id);
                     getFocasGenitoras();
                 }, function () {
                     ngNotify.set("Erro ao salvar dados!", "error");
