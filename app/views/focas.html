@@ -35,9 +35,16 @@
                     <div class="alert alert-warning" role="alert">Sem resultado!</div>
                 </td>
             </tr>
-            <tr ng-show="focas.length" ng-repeat="foca in focas | filter:filter">
+            <tr ng-show="focas.length"
+                ng-repeat="foca in focas | filter:filter">
                 <td>{{foca.id}}</td>
-                <td>{{foca.nome}}</td>
+                <td>{{foca.nome}}
+                    <span ng-show="foca.idade >= 20"
+                          uib-tooltip="Limite de idade atingido."
+                          tooltip-placement="top"
+                          tooltip-trigger="'mouseenter'"
+                          class="glyphicon glyphicon-info-sign alert-danger"></span>
+                </td>
                 <td>{{foca.dt_nas | asDate: 'dd/M/yyyy'}}</td>
                 <td>{{foca.qtd_filhotes}}</td>
                 <td class="actions">
