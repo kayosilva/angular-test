@@ -2,6 +2,10 @@
     <h3 class="modal-title" id="modal-title">Detalhar:</h3>
 </div>
 <div class="modal-body" id="modal-body">
+    <div class="alert alert-danger" ng-show="foca.idade >= 20" role="alert"><b>Atenção!</b><br>
+        Limite de idade atingido
+    </div>
+
     <p><b>Nome: </b>{{foca.nome}}</p>
     <p><b>Gênero: </b>{{foca.genero}}</p>
     <p><b>Viva? </b>{{foca.status == 1 ? "Sim" : "Não"}}</p>
