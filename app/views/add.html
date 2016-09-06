@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Adicionar Focas</h2>
+        <div uib-alert ng-show="mensagem.type" ng-class="'alert-'+(mensagem.type || '')" close="closeAlert($index)">
+            {{mensagem.text}}
+        </div>
+    </div>
+
+</div>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-xs-12">
+        <form name="formFoca" class="well well-sm" ng-submit="salvarDados()">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" required ng-model="foca.nome" class="form-control" id="nome" placeholder="Nome">
+            </div>
+            <div class="form-group">
+                <label for="dt_nascimento">Data Nascimento</label>
+                <input type="text" required ng-model="foca.dtNascimento" class="form-control" id="dt_nascimento"
+                       placeholder="Data de Nascimento">
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="foca.genero" value="M" name="genero"> Macho
+                </label>
+                <label>
+                    <input type="radio" checked ng-model="foca.genero" value="F" name="genero"> Femea
+                </label>
+            </div>
+            <div class="form-group has-success has-feedback">
+                <a class="btn btn-default" href="focas">< Voltar</a>
+                <button type="submit" ng-disabled="!formFoca.$valid" class="btn btn-success">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>

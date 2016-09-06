@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Detalhar:</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <p><b>Nome: </b>{{foca.nome}}</p>
+    <p><b>Gênero: </b>{{foca.genero}}</p>
+    <p><b>Viva? </b>{{foca.status == 1 ? "Sim" : "Não"}}</p>
+    <p><b>Data de nascimento: </b>{{foca.dt_nas | asDate: 'dd/M/yyyy'}}</p>
+    <p><b>Data de cadastro: </b>{{foca.dtCadastro.date | asDate: 'dd/M/yyyy'}}</p>
+    <p><b>Mãe/Pai: </b>{{foca.parent.id > 0 ? foca.parent.nome : "N#D"}}</p>
+
+
+    <div id="list" class="row">
+        <div class="table-responsive col-xs-12">
+            <h4>Filhos</h4>
+            <table class="table table-striped" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Data Nascimento</th>
+                    <th>Gênero</th>
+                    <th>Vivo?</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-show="!foca.children.length">
+                    <td colspan="5">
+                        <div class="alert alert-warning" role="alert">Sem resultado!</div>
+                    </td>
+                </tr>
+                <tr ng-show="foca.children.length" ng-repeat="focaFilho in foca.children">
+                    <td>{{focaFilho.id}}</td>
+                    <td>{{focaFilho.nome}}</td>
+                    <td>{{focaFilho.dtNascimento.date | asDate: 'dd/M/yyyy'}}</td>
+                    <td>{{focaFilho.genero}}</td>
+                    <td>{{focaFilho.status == 1 ? "Sim" : "Não"}}</td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Fechar</button>
+</div>
