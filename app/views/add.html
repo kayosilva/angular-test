@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <h2>Adicionar Focas</h2>
+        <h2>{{foca.id ? "Editar" : "Adicionar"}} Focas</h2>
     </div>
 
 </div>
@@ -23,6 +23,14 @@
                 <label>
                     <input type="radio" checked ng-model="foca.genero" value="F" name="genero"> Femea
                 </label>
+            </div>
+            <div class="form-group" ng-show="foca.id">
+                <label for="status">Status</label>
+                <select name="status" id="status" required ng-model="foca.status" class="form-control">
+                    <option value="">Selecione</option>
+                    <option value="1">Vivo</option>
+                    <option value="0">Morto</option>
+                </select>
             </div>
             <div class="form-group has-success has-feedback">
                 <a class="btn btn-default" href="focas">< Voltar</a>

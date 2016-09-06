@@ -9,6 +9,10 @@ angular.module('app').service("FocaService", function (CONFIG_APP, $http) {
         return $http.get(CONFIG_APP.url + "/focas");
     }
 
+    this.getFoca = function (id) {
+        return $http.get(CONFIG_APP.url + "/focas/" + id);
+    }
+
     /**
      * Salva as focas
      * @param data

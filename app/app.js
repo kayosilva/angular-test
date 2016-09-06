@@ -21,6 +21,10 @@ angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'ngNot
                 templateUrl: 'app/views/add.html',
                 controller: 'AdicionarFocaCtrl',
             })
+            .when('/foca/edit/:id', {
+                templateUrl: 'app/views/add.html',
+                controller: 'AdicionarFocaCtrl',
+            })
 
             // caso não seja nenhum desses, redirecione para a rota '/'
             .otherwise({redirectTo: '/'});
