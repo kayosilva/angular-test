@@ -1,3 +1,18 @@
-<div class="page-header">
-
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Nascimentos</h3>
+        <p>Gráfico quantitativo, filhotes nascidos com vida x nascidos sem vida.</p>
+        <canvas id="doughnut" class="chart chart-doughnut"
+                chart-data="dadosRelatorio1.data" chart-options="options" chart-colors="dadosRelatorio1.colors"
+                chart-labels="dadosRelatorio1.labels">
+        </canvas>
+    </div>
+    <div class="col-xs-6">
+        <h3>Nascimentos por Focas</h3>
+        <p>Gráfico quantitativo, quantidades de filhotes por foca</p>
+        <canvas id="bar" class="chart chart-bar"
+                chart-data="dadosRelatorio2.data" chart-labels="dadosRelatorio2.labels"
+                chart-series="dadosRelatorio2.series">
+        </canvas>
+    </div>
 </div>

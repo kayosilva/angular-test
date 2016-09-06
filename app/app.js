@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'ngNotify'])
+angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'ngNotify', "chart.js"])
     .config(function ($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
 
