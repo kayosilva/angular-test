@@ -18,5 +18,14 @@ angular.module('app').service("FocaService", function (CONFIG_APP, $http) {
         return $http.post(CONFIG_APP.url + "/focas/create", data);
     }
 
+    /**
+     * Deleta o registro
+     * @param id
+     * @returns {HttpPromise}
+     */
+    this.deletar = function (id) {
+        return $http.delete(CONFIG_APP.url + "/focas?id=" + id, {id: id})
+    }
+
 
 })
